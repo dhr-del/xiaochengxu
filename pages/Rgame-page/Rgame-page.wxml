@@ -1,0 +1,142 @@
+<!--pages/Dgame-page/Dgame-page.wxml-->
+  <!--背景-->
+  <image class='gzyz-bg'  src='/image/QQ图片-1.png' ></image>
+  <!--中间总局数与总倍数显示-->
+<view class='center' >
+<image src='/image/椭圆 15.png'></image>
+<image src='/image/椭圆 16.png'></image>
+<image src='/image/中心.png'></image>
+<view>总局数</view>
+<view>总倍率</view>
+<view>{{juCount}}局</view>
+<view>{{beiCount}}倍</view>
+</view>
+
+ 
+ <!--一方-->
+ <view class='This'>
+  <text>玩家</text>
+  <text>筹码数 : {{monCount1}}</text>
+ 
+  <view class='Game'>
+<image src='/image/矩形 27.png'  mode="widthFix"></image>
+  <image src='/image/直线 14.png'  mode="widthFix"></image>
+  <image src='/image/直线 13.png' mode='widthFix'></image>
+  <image src='/image/矩形 27.png'  mode="widthFix"></image>
+  <image src='/image/直线 14.png' mode='widthFix'></image>
+  <image src='/image/椭圆 13.png' mode='widthFix'></image>
+  <image src='/image/椭圆 14.png' mode='widthFix'></image>
+  <image src='/image/椭圆 17.png' mode="widthFix"></image>
+  <view>投掷区</view>
+  <view>选择区</view>
+  </view>
+  <view class='situation'>
+  <text>{{ThisBei}}倍</text>
+  <text>{{ThisLun}}轮</text>
+  <text>{{ThisJu}}局</text>
+</view>
+<view class="This-bei">
+<view bindtap="change"  wx:for="{{areaList}}" wx:key="index"
+  class="This-item {{index==Sindexstatus?'bg-blue':''}}"
+  data-dialogid="{{index}}" bindtap="SgetValueTap">{{item}}</view>
+ </view>
+</view>
+
+
+
+<!--对方-->
+<view class='That'>
+  <text>机器人</text>
+  <text>筹码数{{monCount2}}</text>
+  <view class='ThatGame'>
+<image src='/image/矩形 27.png'  mode="widthFix"></image>
+  <image src='/image/直线 14.png'  mode="widthFix"></image>
+  <image src='/image/直线 13.png' mode='widthFix'></image>
+  <image src='/image/矩形 27.png'  mode="widthFix"></image>
+  <image src='/image/直线 14.png' mode='widthFix'></image>
+  <image src='/image/椭圆 13.png' mode='widthFix'></image>
+  <image src='/image/椭圆 14.png' mode='widthFix'></image>
+  <image src='/image/椭圆 17.png' mode="widthFix"></image>
+  <view>投掷区</view>
+  <view>选择区</view>
+  </view>
+  <view class='Thatsituation'>
+  <text>{{ThatBei}}倍</text>
+  <text>{{ThatLun}}轮</text>
+  <text>{{ThatJu}}局</text>
+  <button bindtap="start1">下一轮</button>
+  <view class="That-bei">
+<view bindtap="change"  wx:for="{{areaList}}" wx:key="index"
+  class="That-item {{index==Aindexstatus?'bg-blue':''}}"
+  data-dialogid="{{index}}" bindtap="AgetValueTap">{{item}}</view>
+</view>
+</view>
+</view>
+
+
+<!--弹窗-->
+<view class="mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view class="dialog" wx:if="{{showModal}}">
+  <image class='top1' src='/image/组 4.png'></image>
+  <image class='top2' src='/image/开始图标.png'></image>
+  <view class="content">
+    <view>筹码数量：</view>
+    <view>游戏局数：</view>
+    <view class="gzyz-input">
+      <input placeholder-class="input-holder" type="number" maxlength="10" bindinput="inputChangeMoney" class="input" placeholder="请输入筹码">筹码数量：</input>
+      <input placeholder-class="input-holder" type="number" maxlength="10" bindinput="inputChangeJu" class="input" placeholder="请输入游戏局">游戏局数</input>
+    </view>
+  </view>
+  <view class="footer">
+    <button class="cancel" bindtap="onCancel" data-status="cancel">取消</button>
+    <button class="confirm" bindtap="onConfirm" data-status="confirm">确定</button>
+  </view>
+</view>
+
+
+<view class='tou' >
+<view wx:for="{{randomNumbers1}}" wx:key="index" data-index="{{item}}" data-id="{{index}}">
+<button ><image src='/image/{{item}}.png' ></image></button>
+</view>
+</view>
+
+<view  class='touzi1'>
+<view wx:for="{{x1}}" wx:key="index"  data-index="{{index}}">
+<image wx:if="{{index<5}}" src='/image/{{item}}.png' class='' ></image>
+</view>
+</view>
+
+
+<view class='tou1' >
+<view wx:for="{{randomNumbers2}}" wx:key="index" bindtap='choosed2' data-index="{{item}}" data-id="{{index}}">
+<button><image src='/image/{{item}}.png' ></image></button>
+</view>
+</view>
+
+<view class='touzi2'>
+<view wx:for="{{x2}}" wx:key="index"  data-index="{{index}}">
+<image wx:if="{{index<5}}" src='/image/{{item}}.png' class='' ></image>
+<image wx:else="{{index<5}}" bindchange="start1"></image>
+</view>
+</view>
+
+<view wx:if="{{end}}" class="gameover">
+<image src="/image/矩形 31.png" style="height:700rpx;width:500rpx;"></image>
+<view class="grade-name">
+<view>玩家 得分</view>
+<view>机器人 得分</view>
+</view>
+<view class="grade">
+<view>{{Peo1grade}}</view>
+<view>:</view>
+<view>{{Peo2grade}}</view>
+</view>
+<view class="moneyover">
+<view wx:if="{{Peo1grade>=Peo2grade}}"><text>玩家</text>赢得<text>机器人</text>筹码:{{grade}}</view>
+<view  wx:else ><text>机器人</text>赢得<text>玩家</text>筹码:{{grade}}</view>
+<view style="position:absolute;top:90%; left:20%;"> 玩家:{{monCount1}} </view>
+<view style="position:absolute; top:150%; left:20%;">机器人:{{monCount2}}</view>
+
+</view>
+<button style="height:80rpx;background-color: #833B08; position: absolute;top:83%;left:34%;line-height: 80rpx; color: #fff;border-radius: 40rpx;" bindtap="Jmpe">退出</button>
+</view>

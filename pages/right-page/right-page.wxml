@@ -1,0 +1,34 @@
+<!--pages/right-page/right-page.wxml-->
+<image class='gzyz-bg'  src='/image/QQ图片-1.png' ></image>
+<view class='gzyz-botton'>
+  <button bindtap='jumpPageLeft'><image src='/image/排行榜.png' mode="widthFix"></image></button>
+  <button bindtap='jumpPageCenter'><image src='/image/首页.png' mode="widthFix"></image></button>
+  <button><image src='/image/消息.png' mode="widthFix"></image></button>
+</view> 
+
+<view>
+<view class='paihang'>
+<image src="/image/矩形 8.png" style="height:1200rpx;width:602rpx;"></image>
+<image src="/image/组 2.png" style="width:466.12rpx;"mode="widthFix"></image>
+<image src="/image/矩形 9.png" style="width:528rpx; height:850rpx;"></image>
+<image src="/image/排行榜11.png" style="width:200rpx;" mode="widthFix"></image>
+<view>排行榜</view>
+</view>
+</view>
+<view>
+
+  <scroll-view class="center" style="height:{{1.5*height}}rpx" scroll-y="true">
+    <block wx:for="{{list}}" wx:key="key" data-item="item" >
+    <view style="height:210rpx;border:2rpx" >
+      <view style="height:80rpx">姓名：{{item.name}}</view>
+      <view >筹码数：{{item.chouma}}</view>
+      <view wx:if="{{index>=3}}" style="position:relative;top:-40% ;left:-25%; font-size: 44rpx;">{{index+1}}</view>
+      <image wx:if="{{index==0}}" src="/image/No.1.png" style="width:80rpx;position: absolute;left:20%;top:3%" mode="widthFix"></image>
+      <view class="image">
+      <image wx:if="{{index==1}}" src="/image/No.2.png" style="width:80rpx;position: absolute;left:20%;top:30%"mode="widthFix"></image>
+      <image wx:if="{{index==2}}" src="/image/No.3.png" style="width:80rpx;position: absolute;left:20%;top:55%"mode="widthFix"></image>
+    </view>
+    </view>
+    </block>
+  </scroll-view>
+</view>

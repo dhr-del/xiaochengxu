@@ -1,0 +1,22 @@
+<image class='gzyz-bg'  src='/image/QQ图片-1.png' ></image>
+<view class='gzyz-botton'>
+  <button bindtap='jumpPage'><image src='/image/消息.png' mode="widthFix"></image></button>
+  <button bindtap='jumpPageCenter'><image src='/image/首页.png' mode="widthFix"></image></button>
+  <button bindtap='jumpPageRight'><image src='/image/排行榜.png' mode="widthFix"></image></button>
+</view> 
+
+<view class='paihang'>
+<image src="/image/矩形 8.png" style="height:1100rpx;width:602rpx;"></image>
+<image src="/image/组 2.png" style="width:600rpx;"mode="widthFix"></image>
+<image  src="/image/通知消息 (1).png" style="width:64rpx;"mode="widthFix"></image>
+<view class="mess">
+  <button style="width:252rpx;height:86rpx; background-color: #96633F;font-weight:500;">通知消息</button>
+  <button style="width:252rpx;height:86rpx; background-color: #96633F;font-weight:500;">好友申请</button>
+<image  src="/image/通知消息 (1).png" style="width:64rpx;"mode="widthFix"></image>
+<image  src="/image/好友申请.png" style="width:64rpx;"mode="widthFix"></image>
+</view>
+<view class="tenter">
+<image  src="/image/骰子.png" style="width:{{108*2}}rpx;height:{{108*2}}rpx;"></image>
+<view style="font-weight:550;">暂时没有通知消息</view>
+</view>
+</view>

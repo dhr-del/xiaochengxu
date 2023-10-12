@@ -1,0 +1,90 @@
+<view>
+  <!--背景-->
+<image class='gzyz-bg'  src='/image/QQ图片-1.png' ></image>
+<!--三个游戏模式进入-->
+<view class='gzyz-to'> 
+  <button bindtap='jumpPageDouble'>本地作战</button>
+  <button bindtap='jumpPageRobort'>人机作战</button>
+  <button bindtap='jumpPageWeb'>线上匹配</button>
+  <view class='gzyz-distube'>
+  <image src='/image/本地作战.png'></image>
+  <image src='/image/人机作战.png'></image>
+  <image src='/image/线上匹配.png'></image>
+  </view>
+</view>
+<!--三个切换键-->
+<view class='gzyz-botton'>
+  <button bindtap='jumpPageLeft'><image src='/image/消息.png' mode="widthFix"></image></button>
+  <button><image src='/image/首页.png' mode="widthFix"></image></button>
+  <button bindtap='jumpPageRight'><image src='/image/排行榜.png' mode="widthFix"></image></button>
+</view> 
+<!--规则与设置-->
+<view class='gzyz-anjian'>
+<button bindtap='jumpPageRule'><image src='/image/规则.png' mode="widthFix"></image></button>
+<button bindtap='jumpPageSet'><image src='/image/设置.png' mode="widthFix"></image></button>
+</view>
+
+  <!--用户信息小图标-->
+<view class='gzyz-message'>
+<image src='/image/我的 (1).png' mode="widthFix"></image>
+<image src='/image/筹码.png' mode="widthFix"></image>
+<view class='Mbutton'>
+ <button></button>
+ <button></button>
+ </view>
+</view>
+
+  <!--用户信息获取-->
+  <view class="userinfo">
+      <image  bindtap="bindViewTap" class="userinfo-avatar" src="{{avatarUrl}}" mode="cover"></image>
+      <view class="userinfo-name">
+      <text>{{nickName2}}</text>
+      <view>{{money}}</view>
+      </view>
+  </view>
+  
+  <!--弹窗：用户信息界面实现-->
+  <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showModal}}">
+  <view class='my'>
+  <image src='/image/矩形 8.png'></image>
+  <image src='/image/矩形 12.png'></image>
+  <image src='/image/历史战绩.png'></image>
+  <view><image src="{{avatarUrl}}" mode="cover" style="width: 176rpx;height: 176rpx;"></image></view>
+  <view>昵称 : {{nickName2}}</view>
+  <view>筹码 :{{money}}</view>
+  <view>历史战绩</view>
+  </view>
+  <scroll-view class="history" style="height:{{2*height}}rpx" scroll-y="true">
+    <block wx:for="{{list}}" wx:key="key" data-item="item" >
+      <view style="height:200rpx;border:2rpx" >
+      <view style="height:80rpx">{{item.result}}</view>
+      <view>{{item.time}}</view>
+      <view class="image">
+      <image wx:if="{{item.victory}}" src="/image/胜利.png"  style="width:100rpx;height:94rpx"></image>
+      <image wx:else src="/image/失败 (4).png"  style="width:100rpx;height:100rpx"></image>
+    </view>
+      </view>
+    </block>
+  </scroll-view>
+
+
+  <view class="modal-footer">
+    <image class="btn-cancel" bindtap="onCancel" data-status="cancel" src="/image/返回.png"></image>
+  </view>
+</view>
+</view>
+
+<view wx:if="{{pipei}}" class="pipei">
+<image src="/image/矩形 18.png" style="width:432rpx; height:696rpx;"></image>
+<image src="/image/组 1.png" style="width:262rpx;" mode="widthFix"></image>
+<image src="/image/组 2.png" style="width:{{248.72*1.8}}rpx" mode="widthFix"></image>
+<view>筹码数量：</view>
+<view>游戏局数：</view>
+<view class="gzyz-input">
+      <input placeholder-class="input-holder" type="number" maxlength="10" bindinput="inputChangeMoney" class="input" placeholder="请输入筹码">筹码数量：</input>
+      <input placeholder-class="input-holder" type="number" maxlength="10" bindinput="inputChangeJu" class="input" placeholder="请输入局数">游戏局数</input>
+</view>
+<button  class="{{get?'style1':'style2'}}" wx:if="{{get}}" catchtap="pipei">匹配</button>
+<button  class="{{get?'style2':'style1'}}" wx:else >匹配中...</button>
+</view>

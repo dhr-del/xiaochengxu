@@ -1,0 +1,23 @@
+{
+  "pages":[
+
+    "pages/start/start",
+    "pages/Wgame-page/Wgame-page",
+    "pages/center-page/center-page",
+    "pages/left-page/left-page",
+    "pages/right-page/right-page",
+    "pages/Dgame-page/Dgame-page",
+    "pages/Rgame-page/Rgame-page",
+
+    "pages/rule-page/rule-page",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#96633F",
+    "navigationBarTitleText": "孤注一掷",
+    "navigationBarTextStyle":"white"
+  },
+  "sitemapLocation": "sitemap.json"
+}
